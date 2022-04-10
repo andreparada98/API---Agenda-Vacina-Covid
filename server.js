@@ -1,5 +1,6 @@
-const http = require("http")        //importa módulo http
-const port = 3000                   //Define a porta 
+import app from "./src/app.js"
+
+const port = process.env.port || 3000                   //Define a porta 
 
 const routes = {                        //Configurando as rotas da API
     '/': 'Pagina Inicial',
@@ -7,11 +8,6 @@ const routes = {                        //Configurando as rotas da API
     '/list' : 'Listagem de agendamentos'
 }
 
-const server = http.createServer((req,res) => {
-    res.writeHead(200, {'Content-Type':'text/plain'});
-    res.end(routes[req.url])
+app.listen(port, () => {                                          // Chama o arquivo App.JS e escuta ele.
+    console.log(`Servidor escutando em http://localhost:${port}`)   
 })
-
-server.listen(port, () => {
-    console.log(`Servidor listening in http://localhost:${port}`)
-} )

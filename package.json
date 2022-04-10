@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "API para registro de vacinas da Covid19",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon server.js"
@@ -18,6 +19,7 @@
   },
   "homepage": "https://github.com/andreparada98/API---Agenda-Vacina-Covid#readme",
   "dependencies": {
+    "express": "^4.17.3",
     "nodemon": "^2.0.15"
   }
 }
