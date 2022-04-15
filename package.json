@@ -19,7 +19,9 @@
   },
   "homepage": "https://github.com/andreparada98/API---Agenda-Vacina-Covid#readme",
   "dependencies": {
+    "axios": "^0.26.1",
     "express": "^4.17.3",
+    "moment": "^2.29.2",
     "nodemon": "^2.0.15"
   }
 }
