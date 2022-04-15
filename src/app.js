@@ -1,23 +1,24 @@
 import express from "express"; 
-//import { moment } from "moment";
+import  db from "./config/dbConnect.js"
+import schedules from "./models/schedule.model.js"
 
-//const moment = require('moment')
+db.on("error", console.log.bind(console, 'Erro de conexão')) // caso aconteça erro, dirá no terminal.
+db.once("open", () => {
+    console.log("conexão com o banco feita com sucesso")
+});        //abre conexão com o banco
+
 const app = express();
 
 app.use(express.json())
 
-const users = [
-    {id:1, "name":"Andre Parada", "birthDate": "25-08-1998", "scheduleDate":"13-04-2022 13:00:00" },
-    {id:2, "name":"Victor Coan", "birthDate":"01-01-2001", "scheduleDate":"13-04-2022 13:00:00"},
-    {id:3, "name":"Rodrigo Medeiros" , "birthDate": "22-07-1998", "scheduleDate":"13-04-2022 13:00:00"}
-];
 
 app.get('/', (req,res) => {                      // Route to HomePage
     res.status(200).send('Homepage');
 });
 
-app.get('/schedule', (req,res) => {             // List Schedules
-    res.status(200).json(users);
+app.get('/schedule', (req,res) => {               //List of Schedule
+    schedules.find((err, schedules) => {res.status(200).json(schedules)}
+    )
 });
 
 app.get('/schedule/:id', (req,res) => {         //Search a specific schedule passing ID
@@ -26,7 +27,7 @@ app.get('/schedule/:id', (req,res) => {         //Search a specific schedule pas
 })
 
 app.post('/schedule', (req,res) => {            // Create a new Schedule
-    users.push(req.body);
+    schedules.push(req.body);
     res.status(201).send('Agendadado com sucesso')
 });
 
