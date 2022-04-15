@@ -1,6 +1,7 @@
 import express from "express"; 
 import  db from "./config/dbConnect.js"
 import schedules from "./models/schedule.model.js"
+import routes from "./routes/index.js"
 
 db.on("error", console.log.bind(console, 'Erro de conexão')) // caso aconteça erro, dirá no terminal.
 db.once("open", () => {
@@ -9,17 +10,9 @@ db.once("open", () => {
 
 const app = express();
 
-app.use(express.json())
+app.use(express.json());
 
-
-app.get('/', (req,res) => {                      // Route to HomePage
-    res.status(200).send('Homepage');
-});
-
-app.get('/schedule', (req,res) => {               //List of Schedule
-    schedules.find((err, schedules) => {res.status(200).json(schedules)}
-    )
-});
+routes(app);        //Call from routes.
 
 app.get('/schedule/:id', (req,res) => {         //Search a specific schedule passing ID
     let index = searchSchedule(req.params.id);
