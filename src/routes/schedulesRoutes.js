@@ -8,6 +8,7 @@ router
     .get("/schedules/:id", ScheduleController.listScheduleById)
     .post("/schedules", ScheduleController.createSchedule)
     .put("/schedules/:id", ScheduleController.editSchedule)
+    .delete("/schedules/:id", ScheduleController.excludeSchedule)
 
 
 export default router;
