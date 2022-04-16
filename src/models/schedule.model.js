@@ -6,6 +6,7 @@ const scheduleSchema = new mongoose.Schema(
     name: {type: String, required: true},
     birthDate: {type: String, required: true},
     scheduleDate: {type: String, required: true},
+    hourDate: {type: String, required: true}
 }
 )
 
