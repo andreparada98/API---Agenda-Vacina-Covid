@@ -4,9 +4,7 @@ import schedules from "./models/schedule.model.js"
 import routes from "./routes/index.js"
 
 db.on("error", console.log.bind(console, 'Erro de conexão')) // caso aconteça erro, dirá no terminal.
-db.once("open", () => {
-    console.log("conexão com o banco feita com sucesso")
-});        //abre conexão com o banco
+db.once("open", () => {console.log("conexão com o banco feita com sucesso")}); //abre conexão com o banco
 
 const app = express();
 
@@ -19,10 +17,7 @@ app.get('/schedule/:id', (req,res) => {         //Search a specific schedule pas
     res.json(users[index]);
 })
 
-app.post('/schedule', (req,res) => {            // Create a new Schedule
-    schedules.push(req.body);
-    res.status(201).send('Agendadado com sucesso')
-});
+
 
 app.put('/schedule/:id', (req,res) => {         // Edit a Schedule passing ID
     let index = searchSchedule(req.params.id);
