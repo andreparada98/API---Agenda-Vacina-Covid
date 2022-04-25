@@ -1,9 +1,8 @@
 import app from "./src/app.js"
 
-const port = process.env.port || 3000                   //Define a porta 
+const port = process.env.port || 4000                   //Define a porta 
 
 const routes = {
-    '/': 'HomePage',
     '/schedules': 'Agendamento'
 }
 
